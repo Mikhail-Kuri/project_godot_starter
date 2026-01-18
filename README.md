@@ -1,2 +1,2 @@
 # project_godot_starter
-here started (2.0 ) my godot jurney
+Started my (2.0) Godot adventures :runner::dash:
