@@ -1,5 +1,15 @@
 extends CharacterBody2D
 
+enum PlayerState {
+	IDLE,
+	RUN,
+	JUMP,
+	FALL
+}
+
+var state: PlayerState = PlayerState.IDLE
+
+
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -7,36 +17,61 @@ const JUMP_VELOCITY = -300.0
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Input
 	var direction := Input.get_axis("move_left", "move_right")
-	
-	# Flip the Sprite
+
+	# Flip sprite
 	if direction > 0:
 		animated_sprite.flip_h = false
-	elif direction < 0: 
+	elif direction < 0:
 		animated_sprite.flip_h = true
-		
-	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("Idle")
-		else:
-			animated_sprite.play("run")
-	else:
-		animated_sprite.play("jump")
-		
-		
+
+	# Horizontal movement
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	# State & animation
+	update_state(direction)
+	update_animation()
+
 	move_and_slide()
+
+
+# Deicde witch state the player is in
+
+func update_state(direction: float) -> void:
+	if is_on_floor():
+		if direction == 0:
+			state = PlayerState.IDLE
+		else:
+			state = PlayerState.RUN
+	else:
+		if velocity.y < 0:
+			state = PlayerState.JUMP
+		else:
+			state = PlayerState.FALL
+
+#Based on the state, update the curent animation
+
+func update_animation() -> void:
+	match state:
+		PlayerState.IDLE:
+			animated_sprite.play("Idle")
+		PlayerState.RUN:
+			animated_sprite.play("run")
+		PlayerState.JUMP:
+			animated_sprite.play("jump")
+		PlayerState.FALL:
+			animated_sprite.play("jump")
+
+
