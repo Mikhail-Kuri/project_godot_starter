@@ -11,15 +11,15 @@ classes and abilities with zero logic duplication.
 
 ## Table of Contents
 
-- [Overview](#overview) - [Folder Structure](#folder-structure) -
-[PlayerBase](#playerbase-shared-logic-only) - [Ability
-Manager](#ability-manager-critical) - [Abilities as
-Scenes](#abilities-as-scenes) - [Class
-Data](#class-data-stats--abilities) - [Class
-Scenes](#class-scenes-thin-wrappers) - [Character
-Selection](#character-selection) - [Adding a New
-Class](#adding-a-new-class) - [Best Practices](#best-practices) -
-[Verdict](#verdict)
+- [Overview](#-overview) - [Folder Structure](#-folder-structure) -
+[PlayerBase](#-playerbase-shared-logic-only) - [Ability
+Manager](#-ability-manager-critical) - [Abilities as
+Scenes](#-abilities-as-scenes) - [Class
+Data](#-class-data-stats--abilities) - [Class
+Scenes](#-class-scenes-thin-wrappers) - [Character
+Selection](#-character-selection) - [Adding a New
+Class](#-adding-a-new-class) - [Best Practices](#-best-practices) -
+[Verdict](#-verdict)
 
 ---
 
