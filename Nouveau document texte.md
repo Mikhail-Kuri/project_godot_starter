@@ -25,12 +25,18 @@ Class](#-adding-a-new-class) - [Best Practices](#-best-practices) -
 
 ## 🏗 Overview
 
-PlayerBase (scene + script) │ ├── Movement (shared) ├── Jump / Gravity
-(shared) ├── Health (shared) ├── State machine (shared) │ ├──
-AbilityManager │ ├── Primary ability │ ├── Secondary ability │ └──
-ClassData (stats & abilities)
-
-yaml Copy code
+PlayerBase (scene + script)
+│
+├── Movement (shared)
+├── Jump / Gravity (shared)
+├── Health (shared)
+├── State machine (shared)
+│
+├── AbilityManager
+│ ├── Primary ability
+│ ├── Secondary ability
+│
+└── ClassData (stats & abilities)
 
 ---
 
