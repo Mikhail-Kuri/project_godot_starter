@@ -1,29 +1,29 @@
-\# 🕹️ Adding hero classes feature
+# 🕹️ Adding hero classes feature
 
-\![Godot\](https://img.shields.io/badge/Godot-Engine-478CBF?logo=godot-engine&logoColor=white)
-\![GDScript\](https://img.shields.io/badge/GDScript-Language-FFDB4D?logo=godot-engine&logoColor=white)
-\![License\](https://img.shields.io/badge/License-MIT-green)
+![Godot](https://img.shields.io/badge/Godot-Engine-478CBF?logo=godot-engine&logoColor=white)
+![GDScript](https://img.shields.io/badge/GDScript-Language-FFDB4D?logo=godot-engine&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 A scalable, modular player architecture for Godot, designed for multiple
 classes and abilities with zero logic duplication.
 
-\-\--
+---
 
-\## Table of Contents
+## Table of Contents
 
-\- \[Overview\](#overview) - \[Folder Structure\](#folder-structure) -
-\[PlayerBase\](#playerbase-shared-logic-only) - \[Ability
-Manager\](#ability-manager-critical) - \[Abilities as
-Scenes\](#abilities-as-scenes) - \[Class
-Data\](#class-data-stats\--abilities) - \[Class
-Scenes\](#class-scenes-thin-wrappers) - \[Character
-Selection\](#character-selection) - \[Adding a New
-Class\](#adding-a-new-class) - \[Best Practices\](#best-practices) -
-\[Verdict\](#verdict)
+- [Overview](#overview) - [Folder Structure](#folder-structure) -
+[PlayerBase](#playerbase-shared-logic-only) - [Ability
+Manager](#ability-manager-critical) - [Abilities as
+Scenes](#abilities-as-scenes) - [Class
+Data](#class-data-stats--abilities) - [Class
+Scenes](#class-scenes-thin-wrappers) - [Character
+Selection](#character-selection) - [Adding a New
+Class](#adding-a-new-class) - [Best Practices](#best-practices) -
+[Verdict](#verdict)
 
-\-\--
+---
 
-\## 🏗 Overview
+## 🏗 Overview
 
 PlayerBase (scene + script) │ ├── Movement (shared) ├── Jump / Gravity
 (shared) ├── Health (shared) ├── State machine (shared) │ ├──
@@ -32,9 +32,9 @@ ClassData (stats & abilities)
 
 yaml Copy code
 
-\-\--
+---
 
-\## 📁 Folder Structure
+## 📁 Folder Structure
 
 res:// ├── player/ │ ├── PlayerBase.tscn │ ├── player_base.gd │ ├──
 classes/ │ ├── wizard/ │ │ ├── Wizard.tscn │ │ └── wizard.gd │ ├──
@@ -44,26 +44,26 @@ wind_slash/ │ ├── fireball/ │ ├── dash/ │ ├── data/ │ 
 
 markdown Copy code
 
-\> Organizing early prevents chaos later.
+> Organizing early prevents chaos later.
 
-\-\--
+---
 
-\## 🧍 PlayerBase (Shared Logic Only)
+## 🧍 PlayerBase (Shared Logic Only)
 
-\`PlayerBase\` is \*\*class-agnostic\*\*.
+`PlayerBase` is **class-agnostic**.
 
-\*\*Responsibilities:\*\*
+**Responsibilities:**
 
-\- Movement & speed - Jumping (jump counter) - Gravity - Facing
+- Movement & speed - Jumping (jump counter) - Gravity - Facing
 direction - State machine - Health - Input routing
 
-\*\*What NOT to include:\*\*
+**What NOT to include:**
 
-\- Class-specific attacks - Wizard/Rogue logic
+- Class-specific attacks - Wizard/Rogue logic
 
-\*\*Ability hooks:\*\*
+**Ability hooks:**
 
-\`\`\`gdscript func primary_attack(): if ability_manager:
+```gdscript func primary_attack(): if ability_manager:
 ability_manager.use_primary()
 
 func secondary_attack(): if ability_manager:
@@ -103,8 +103,8 @@ class_data.gd
 
 gdscript Copy code extends Resource class_name ClassData
 
-\@export var max_health := 100 \@export var speed := 130 \@export var
-primary_ability_scene: PackedScene \@export var secondary_ability_scene:
+@export var max_health := 100 @export var speed := 130 @export var
+primary_ability_scene: PackedScene @export var secondary_ability_scene:
 PackedScene Example: wizard_data.tres
 
 ini Copy code max_health = 70 speed = 110 primary_ability =
@@ -113,11 +113,11 @@ Wrappers) Example: Wizard.tscn inherits from PlayerBase.tscn
 
 wizard.gd
 
-gdscript Copy code extends \"res://player/player_base.gd\"
+gdscript Copy code extends "res://player/player_base.gd"
 
-\@export var class_data: ClassData
+@export var class_data: ClassData
 
-func \_ready(): apply_class_data()
+func _ready(): apply_class_data()
 
 func apply_class_data(): max_health = class_data.max_health SPEED =
 class_data.speed
