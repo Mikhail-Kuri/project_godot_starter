@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dx6idqtfyribu" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://j52i0hlau4is" path="res://scenes/kill_zone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bq3f7t6ou76sj" path="res://scenes/enemy.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://e508paksnfm1" path="res://scenes/my_player.tscn" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://e508paksnfm1" path="res://player/my_player.tscn" id="6_u5sy4"]
 [ext_resource type="FontFile" uid="uid://cssamnb1cut6p" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]

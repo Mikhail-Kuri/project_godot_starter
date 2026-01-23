@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dvqwep3jl7e10"]
+
+[node name="AbilityManager" type="Node2D"]
