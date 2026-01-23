@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://bnxu12v653vdp"]
 
-[ext_resource type="PackedScene" uid="uid://cds34hyvdtt42" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dx6idqtfyribu" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://j52i0hlau4is" path="res://scenes/kill_zone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bq3f7t6ou76sj" path="res://scenes/enemy.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://e508paksnfm1" path="res://scenes/my_player.tscn" id="6_u5sy4"]
 [ext_resource type="FontFile" uid="uid://cssamnb1cut6p" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
@@ -181,13 +181,16 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD2/wMAAAAEAAAAAAD3/wMAAAAEAAAAAAD4/wMAAAAEAAAAAAD5/wMAAAAEAAAAAAD6/wMAAAAEAAAAAAD7/wMAAAAEAAAAAAD8/wMAAAAEAAAAAAD9/wMAAAAEAAAAAAD+/wMAAAAEAAAAAAD//wMAAAAEAAAAAAAAAAMAAAAEAAAAAAABAAMAAAAEAAAAAAACAAMAAAAEAAAAAAADAAMAAAAEAAAAAAAEAAMAAAAEAAAAAAAFAAMAAAAEAAAAAAAGAAMAAAAEAAAAAAAHAAMAAAAEAAAAAAAIAAMAAAAEAAAAAAAJAAMAAAAEAAAAAAAKAAMAAAAEAAAAAAALAAMAAAAEAAAAAAAMAAMAAAAEAAAAAAANAAMAAAAEAAAAAAAOAAMAAAAEAAAAAAAPAAMAAAAEAAAAAAAQAAMAAAAEAAAAAAARAAMAAAAEAAAAAAASAAMAAAAEAAAAAAATAAMAAAAEAAAAAAAUAAMAAAAEAAAAAAAVAAMAAAAEAAAAAAAWAAMAAAAEAAAAAAAXAAMAAAAEAAAAAAAYAAMAAAAEAAAAAAAZAAMAAAAEAAAAAAAaAAMAAAAEAAAAAADv/wMAAAAEAAAAAADw/wMAAAAEAAAAAADx/wMAAAAEAAAAAADy/wMAAAAEAAAAAADz/wMAAAAEAAAAAAD0/wMAAAAEAAAAAAD1/wMAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(15, 31)
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(-8, 22)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -7)
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(8, 7)
 zoom = Vector2(3, 3)
-limit_bottom = 165
+limit_left = -9999974
+limit_top = -10000005
+limit_right = 10000026
+limit_bottom = 160
 limit_smoothed = true
 
 [node name="Kill_Zone" parent="." instance=ExtResource("5_iywne")]
